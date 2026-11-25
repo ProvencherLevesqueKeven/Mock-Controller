@@ -20,12 +20,12 @@ namespace mock.depart.Controllers
         public virtual string UserId { get { return User.FindFirstValue(ClaimTypes.NameIdentifier)!; } }
 
 
-        // Pour facilité les tests il vaut mieux utiliser un ActionResult<Type>
+        // TODO Pour facilité les tests il vaut mieux utiliser un ActionResult<Type>
         // DELETE: api/Cats/5
         [HttpDelete("{id}")]
         public ActionResult<Cat> DeleteCat(int id)
         {
-            // UserId utilise une propriété pour pouvoir la "mock" facilement
+            // TODO vous devrez surement en faire une propriété pour pouvoir la "mock"
             string? userid = UserId;
 
             // TODO vous devrez aussi faire un mock avec le service
@@ -50,7 +50,7 @@ namespace mock.depart.Controllers
                     return BadRequest("Cat is too cute");
                 }
             }
-            catch(Code18Exception)
+            catch (Code18Exception)
             {
                 return Unauthorized();
             }
